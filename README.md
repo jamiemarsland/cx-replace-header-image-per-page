@@ -10,4 +10,6 @@ Instructions
 
 Versions
 
+v1.0.1 - fix error message
+
 v1.0 - initial release
