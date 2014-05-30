@@ -46,7 +46,6 @@ class Pootlepress_Replace_Header_Image {
 	public function __construct ( $file ) {
 		$this->file = $file;
 		$this->load_plugin_textdomain();
-		add_action( 'init', 'check_main_heading', 0 );
 		add_action( 'init', array( &$this, 'load_localisation' ), 0 );
 
 		// Run this on activation.
@@ -467,6 +466,10 @@ Image should be same width as your site width.',
     public function metabox_handle($post_id) {
         $pID = '';
         global $globals, $post;
+
+        if (!isset($_POST['post_type'])) {
+            return $post_id;
+        }
 
         if ( 'page' == $_POST['post_type'] ) {
             if ( ! current_user_can( 'edit_page', $post_id ) ) {
