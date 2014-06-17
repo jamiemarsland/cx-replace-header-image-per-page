@@ -590,11 +590,15 @@ Image should be same width as your site width.',
 
     public function option_css() {
 
-        if (is_home() || is_post_type_archive()) {
+        if (is_home() || (is_post_type_archive() && !is_shop())) {
             return;
         }
 
-        $postID = get_the_ID();
+        if (is_shop()) {
+            $postID = woocommerce_get_page_id('shop');
+        } else {
+            $postID = get_the_ID();
+        }
 
         global $woo_options;
         $isFullWidth = (isset( $woo_options['woo_header_full_width'] ) && $woo_options['woo_header_full_width'] == 'true');
