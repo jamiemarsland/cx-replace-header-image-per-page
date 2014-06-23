@@ -10,6 +10,8 @@ Instructions
 
 Versions
 
+v1.1.0 - update WooCommerce compatibility
+
 v1.0.1 - fix error message
 
 v1.0 - initial release
